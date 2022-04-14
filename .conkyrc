@@ -114,7 +114,7 @@ $font${color #009bf9}Outbound Connection ${alignr} Remote Service/Port${color}${
  ${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
 $font${color #009bf9}$stippled_hr
 ${color lightgrey}sda:  ${fs_used /}/${fs_size /}  ${fs_bar /}
--- ${color lightgrey}sdb:  ${fs_used /media}/${fs_size /media}  ${fs_bar /media}
+${color lightgrey}sdb:  ${fs_used /media}/${fs_size /media}  ${fs_bar /media}
 ${color #009bf9}$stippled_hr
 ${font Monospace:size=8}${color #009bf9}${audacious_title 60}${font}
 ${color #009bf9}${audacious_bar 10,350}
