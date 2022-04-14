@@ -87,6 +87,12 @@ ${color lightgrey}${top_mem name 4}     ${top_mem pid 4}  ${top_mem cpu 4}  ${to
 ${color #009bf9}$stippled_hr
 #
 $font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
+${color lightgrey}Down:$color ${downspeed eth0} k/s${color lightgrey} ${offset 80}Up:$color ${upspeed eth0} k/s
+${downspeedgraph eth0 32,170 009bf9 ffffff} ${offset 20} ${upspeedgraph eth0 32,170 009bf9 ffffff}
+${color #009bf9}IPs:$color ${addr eth0} ${offset 50} ${execi 7200 /usr/local/bin/publicip.sh}
+${color lightgrey}$stippled_hr
+#
+$font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
 ${color lightgrey}Down:$color ${downspeed wlan0} k/s${color lightgrey} ${offset 80}Up:$color ${upspeed wlan0} k/s
 ${downspeedgraph wlan0 32,170 009bf9 ffffff} ${offset 20} ${upspeedgraph wlan0 32,170 009bf9 ffffff}
 ${color #009bf9}IPs:$color ${addr wlan0} ${offset 50} ${execi 7200 /usr/local/bin/publicip.sh}
@@ -108,7 +114,7 @@ $font${color #009bf9}Outbound Connection ${alignr} Remote Service/Port${color}${
  ${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
 $font${color #009bf9}$stippled_hr
 ${color lightgrey}sda:  ${fs_used /}/${fs_size /}  ${fs_bar /}
-${color lightgrey}sdb:  ${fs_used /media}/${fs_size /media}  ${fs_bar /media}
+-- ${color lightgrey}sdb:  ${fs_used /media}/${fs_size /media}  ${fs_bar /media}
 ${color #009bf9}$stippled_hr
 ${font Monospace:size=8}${color #009bf9}${audacious_title 60}${font}
 ${color #009bf9}${audacious_bar 10,350}
