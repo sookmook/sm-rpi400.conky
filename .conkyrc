@@ -1,0 +1,123 @@
+conky.config = {
+  alignment = 'top_right',
+  background = false,
+  border_width = 0,
+  cpu_avg_samples = 2,
+  default_outline_color = 'grey',
+  default_shade_color = 'black',
+  double_buffer = true,
+  draw_borders = false,
+  draw_graph_borders = true,
+  draw_outline = false,
+  draw_shades = false,
+  use_xft = true,
+  font = 'Monospace:size=9',
+  gap_x = 5,
+  gap_y = 30,
+  minimum_height = 5,
+  minimum_width = 5,
+  net_avg_samples = 1,
+  out_to_console = false,
+  out_to_stderr = false,
+  extra_newline = false,
+  own_window = true,
+  own_window_colour = white,
+  own_window_transparent = false,
+  own_window_type = 'desktop',
+  own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+  stippled_borders = 0,
+  update_interval = 0.5,
+  uppercase = false,
+  use_spacer = 'right',
+  show_graph_scale = false,
+  show_graph_range = false,
+  override_utf8_locale = true,
+  default_color ='ffffff',
+  default_color = 'yellow',
+  color0 = '4C6D25',
+  color1 = '000000',
+  color2 = 'FF6E00',
+  color2 = '009bf9',
+  color3 = 'CB0C29',
+  color3 = '00D5F9',
+  color4 = 'FFCC00',
+  color5 = '4E7A0A',
+  color6 = '1E1EBF',
+  color7 = '572C66',
+  color8 = 'FF6600',
+  color9 = 'FF0000',
+}
+
+conky.text = [[
+${font Verdana:style=Bold:size=12}${color #009bf9}${alignc}${time %a %d.%m.%Y %k:%M}
+$font$color${alignc}Debian Buster64 ${execi 60000 env | grep '^DESKTOP_SESSION' | cut -d'=' -f2-} $kernel ${machine} 
+${font Verdana:style=Bold:size=12}${color red}${alignc}${nodename_short}$font
+${color #009bf9}$stippled_hr
+${color lightgrey}Processes:$color $processes  ${color grey}Running:$color $running_processes ${color lightgrey}Up:$color $uptime
+${color #009bf9}Load: ${color #009bf9}${loadavg 1} ${color #009bf9}${loadavg 2} ${color #009bf9}${loadavg 3}
+${color #009bf9}Load: ${loadgraph 32,280 09bf9 ffffff -l}  ${loadavg 1}${color}
+${color2}CPU1: ${color2}${cpubar cpu1 10,280}  ${cpu cpu1}${color}
+${color3}CPU2: ${color3}${cpubar cpu2 10,280}  ${cpu cpu2}${color}
+${color2}CPU3: ${color2}${cpubar cpu3 10,280}  ${cpu cpu3}${color}
+${color3}CPU4: ${color3}${cpubar cpu4 10,280}  ${cpu cpu4}${color}
+#${color2}CPU1:            ${goto 60}${color2}${cpubar cpu1 10,155}${color} ${alignr 15}${if_match ${cpu cpu1}<50}${color1}${cpu cpu1}${color}${else}${if_match ${cpu cpu1}>75}${color9}${cpu cpu1}${color}${else}${color8}${cpu cpu1}${color}${endif}${endif} ${goto 248}${color1}%${color}
+#${color3}CPU2:            ${goto 60}${color3}${cpubar cpu2 10,155}${color} ${alignr 15}${if_match ${cpu cpu2}<50}${color1}${cpu cpu2}${color}${else}${if_match ${cpu cpu2}>75}${color9}${cpu cpu2}${color}${else}${color8}${cpu cpu2}${color}${endif}${endif} ${goto 248}${color1}%${color}
+#${color2}CPU3:            ${goto 60}${color2}${cpubar cpu3 10,155}${color} ${alignr 15}${if_match ${cpu cpu3}<50}${color1}${cpu cpu3}${color}${else}${if_match ${cpu cpu3}>75}${color9}${cpu cpu3}${color}${else}${color8}${cpu cpu3}${color}${endif}${endif} ${goto 248}${color1}%${color}
+#${color3}CPU4:            ${goto 60}${color3}${cpubar cpu4 10,155}${color} ${alignr 15}${if_match ${cpu cpu4}<50}${color1}${cpu cpu4}${color}${else}${if_match ${cpu cpu4}>75}${color9}${cpu cpu4}${color}${else}${color8}${cpu cpu4}${color}${endif}${endif} ${goto 248}${color1}%${color}
+${color #009bf9}CPU:  ${cpubar 10,280}  $cpu%${color}
+${color #009bf9}CPU:  ${cpugraph 32,280 009bf9 ffffff}  ${cpu cpu}%${color}
+${color #009bf9}CPU Temp:  ${hwmon 0 temp 1}C $color
+${color #009bf9}$stippled_hr
+$font${color lightgrey}RAM:  $mem/$memmax - $memperc% ${membar}
+$font${color lightgrey}Swap: $swap/$swapmax - $swapperc% ${swapbar}
+#
+${color #009bf9}$stippled_hr
+${font}${color}Name               PID   CPU%   MEM%    ${color #009bf9}Top${color}
+${font Monospace:size=8}${color lightgrey}${top name 1}     ${top pid 1}  ${top cpu 1}  ${top mem 1}
+${top name 2}     ${top pid 2}  ${top cpu 2}  ${top mem 2}
+${top name 3}     ${top pid 3}  ${top cpu 3}  ${top mem 3}
+${top name 4}     ${top pid 4}  ${top cpu 4}  ${top mem 4}
+${color #009bf9}$stippled_hr
+#
+${font}${color}Name               PID   CPU%   MEM%    ${color #009bf9}Top Mem${color}
+${font Monospace:size=8}${color lightgrey}${top_mem name 1}     ${top_mem pid 1}  ${top_mem cpu 1}  ${top_mem mem 1}
+${color lightgrey}${top_mem name 2}     ${top_mem pid 2}  ${top_mem cpu 2}  ${top_mem mem 2}
+${color lightgrey}${top_mem name 3}     ${top_mem pid 3}  ${top_mem cpu 3}  ${top_mem mem 3}
+${color lightgrey}${top_mem name 4}     ${top_mem pid 4}  ${top_mem cpu 4}  ${top_mem mem 4}
+${color #009bf9}$stippled_hr
+#
+$font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
+${color lightgrey}Down:$color ${downspeed eth0} k/s${color lightgrey} ${offset 80}Up:$color ${upspeed eth0} k/s
+${downspeedgraph eth0 32,170 009bf9 ffffff} ${offset 20} ${upspeedgraph eth0 32,170 009bf9 ffffff}
+${color #009bf9}IPs:$color ${addr eth0} ${offset 90} ${execi 7200 /usr/local/bin/publicip.sh}
+${color lightgrey}$stippled_hr
+#
+$font${color #009bf9}Connections${alignr}${color #009bf9}In:$color ${tcp_portmon 1 32767 count}  ${color #009bf9}Out:$color ${tcp_portmon 32768 61000 count}   ${color #009bf9}ALL:$color ${tcp_portmon 1 65535 count}
+${color lightgrey}Down:$color ${downspeed wlan0} k/s${color lightgrey} ${offset 80}Up:$color ${upspeed wlan0} k/s
+${downspeedgraph wlan0 32,170 009bf9 ffffff} ${offset 20} ${upspeedgraph wlan0 32,170 009bf9 ffffff}
+${color #009bf9}IPs:$color ${addr wlan0} ${offset 90} ${execi 600 /usr/local/bin/publicip.sh}
+${color lightgrey}$stippled_hr
+#
+${color #009bf9}Inbound Connection ${alignr} Local Service/Port${color}${font Monospace:size=8}
+ ${tcp_portmon 1 32767 rhost 0} ${alignr} ${tcp_portmon 1 32767 lservice 0}
+ ${tcp_portmon 1 32767 rhost 1} ${alignr} ${tcp_portmon 1 32767 lservice 1}
+ ${tcp_portmon 1 32767 rhost 2} ${alignr} ${tcp_portmon 1 32767 lservice 2}
+ ${tcp_portmon 1 32767 rhost 3} ${alignr} ${tcp_portmon 1 32767 lservice 3}
+ ${tcp_portmon 1 32767 rhost 4} ${alignr} ${tcp_portmon 1 32767 lservice 4}
+ ${tcp_portmon 1 32767 rhost 5} ${alignr} ${tcp_portmon 1 32767 lservice 5}
+$font${color #009bf9}Outbound Connection ${alignr} Remote Service/Port${color}${font Monospace:size=8}
+ ${tcp_portmon 32768 61000 rhost 0} ${alignr} ${tcp_portmon 32768 61000 rservice 0}
+ ${tcp_portmon 32768 61000 rhost 1} ${alignr} ${tcp_portmon 32768 61000 rservice 1}
+ ${tcp_portmon 32768 61000 rhost 2} ${alignr} ${tcp_portmon 32768 61000 rservice 2}
+ ${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
+ ${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
+ ${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
+$font${color #009bf9}$stippled_hr
+${color lightgrey}SSD:   ${fs_used /}/${fs_size /}  ${fs_bar /}
+${color lightgrey}DRV1: ${fs_used /media/pi/SM7U11_14T_20220124}/${fs_size /media/pi/SM7U11_14T_20220124}  ${fs_bar /media/pi/SM7U11_14T_20220124}
+${color lightgrey}DRV2: ${fs_used /media/pi/SM5H4_1.5T_20101123}/${fs_size /media/pi/SM5H4_1.5T_20101123}  ${fs_bar /media/pi/SM5H4_1.5T_20101123}
+${color #009bf9}$stippled_hr
+${font Monospace:size=8}${color #009bf9}${audacious_title 60}${font}
+${color #009bf9}${audacious_bar 10,350}
+${color #009bf9}Desktop: ${desktop}/$desktop_number
+]]
